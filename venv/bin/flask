@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 #!/home/gregory/git/DicePy/venv/bin/python3
-=======
-#!/bin/sh
-'''exec' "/home/gregory/Documents/GitHub Repositories/DicePy/venv/bin/python3" "$0" "$@"
-' '''
->>>>>>> c55cf40df8a4bd0c980ecf72dfa8d6c8726aafd2
 # -*- coding: utf-8 -*-
 import re
 import sys
