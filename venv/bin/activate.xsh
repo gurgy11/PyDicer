@@ -28,7 +28,11 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
+<<<<<<< HEAD
 $VIRTUAL_ENV = r"/home/gregory/git/DicePy/venv"
+=======
+$VIRTUAL_ENV = r"/home/gregory/Documents/GitHub Repositories/DicePy/venv"
+>>>>>>> c55cf40df8a4bd0c980ecf72dfa8d6c8726aafd2
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]

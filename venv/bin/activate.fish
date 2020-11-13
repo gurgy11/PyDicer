@@ -57,7 +57,11 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
+<<<<<<< HEAD
 set -gx VIRTUAL_ENV '/home/gregory/git/DicePy/venv'
+=======
+set -gx VIRTUAL_ENV '/home/gregory/Documents/GitHub Repositories/DicePy/venv'
+>>>>>>> c55cf40df8a4bd0c980ecf72dfa8d6c8726aafd2
 
 # https://github.com/fish-shell/fish-shell/issues/436 altered PATH handling
 if test (echo $FISH_VERSION | head -c 1) -lt 3
