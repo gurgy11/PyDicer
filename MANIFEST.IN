@@ -1,0 +1,3 @@
+graft dicepy/static
+graft dicepy/templates
+global-exclude *.pyc

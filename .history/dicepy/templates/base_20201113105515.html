@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>DicePy - Welcome!</title>
+    {% endif %}
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dicepydicepy.css') }}"> {% block css %} {% endblock %}
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/jquery/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.js') }}"></script> {% block scripts %} {% endblock %}
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    
+</body>
+
+</html>
