@@ -15,4 +15,4 @@ FLASK_APP=$flask_app
 echo "Exports done. Flask app set as $flask_app. Running Flask app..."
 flask run
 
-echo "Flask app ended because of CTRL+C!"
+echo "Flask app killed with CTRL+C!"
