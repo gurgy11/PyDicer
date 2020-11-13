@@ -107,31 +107,16 @@
                     <a href="/auth/profile" class="nav-link">{{ session.username }}</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/auth/logout" class="nav-link">Logout</a>
+                    <a href="/auth/logout" class="nav-link"></a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a href="/auth/register" class="nav-link">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/auth/login" class="nav-link">Login</a>
+                    <a href="/auth/register" class="nav-link"></a>
                 </li>
                 {% endif %}
             </ul>
         </div>
     </nav>
-
-    <!-- CONTENT CONTAINER -->
-    <div class="container">
-
-        <!-- HEADER BLOCK -->
-        {% block header %} {% endblock %}
-
-        <!-- CONTENT BLOCK -->
-        {% block content %} {% endblock %}
-
-    </div>
-
 </body>
 
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>DicePy - Welcome!</title>
+    {% endif %}
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dicepydicepy.css') }}"> {% block css %} {% endblock %}
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/jquery/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.js') }}"></script> {% block scripts %} {% endblock %}
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <!-- BRAND -->
+        <a href="/index" class="navbar-brand">DicePy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- CONTENT -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+            <!-- LEFT -->
+            <ul class="navbar-nav mr-auto">
+
+                <!-- PRODUCTS -->
+                <li class="nav-item dropdown">
+                    <a href="/products" class="nav-link dropdown-toggle" id="productsDropdown" role="button" data-toggle="dropdown">Products</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+</body>
+
+</html>

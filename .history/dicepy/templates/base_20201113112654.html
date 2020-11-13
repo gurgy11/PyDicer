@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>DicePy - Welcome!</title>
+    {% endif %}
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dicepydicepy.css') }}"> {% block css %} {% endblock %}
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/jquery/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.js') }}"></script> {% block scripts %} {% endblock %}
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <!-- BRAND -->
+        <a href="/index" class="navbar-brand">DicePy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- CONTENT -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+            <!-- LEFT -->
+            <ul class="navbar-nav mr-auto">
+
+                <!-- PRODUCTS -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="productsDropdown" role="button" data-toggle="dropdown">Products</a>
+                    <div class="dropdown-menu">
+                        <a href="/products/index" class="dropdown-item">All</a>
+                        <a href="/products/in-stock" class="dropdown-item">In stock</a>
+                        <a href="/products/out-of-stock" class="dropdown-item">Out of stock</a>
+                    </div>
+                </li>
+
+                <!-- STORAGES -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="storagesDropdown" role="button" data-toggle="dropdown">Storages</a>
+                    <div class="dropdown-menu">
+                        <a href="/storages/warehouses" class="dropdown-item">Warehouses</a>
+                        <a href="/storages/locations" class="dropdown-item">Locations</a>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+</body>
+
+</html>

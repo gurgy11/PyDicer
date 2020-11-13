@@ -70,68 +70,21 @@
                     <a href="#" class="nav-link dropdown-toggle" id="productsDropdown" role="button" data-toggle="dropdown">Products</a>
                     <div class="dropdown-menu">
                         <div class="dropdown-header">Manage Categories</div>
-                        <a href="/categories/parents" class="dropdown-item">Parent</a>
-                        <a href="/categories/children" class="dropdown-item">Children</a>
+                        <a href="/categories/index" class="dropdown-item">Categories</a>
+                        <a href="/sub-categories/index" class="dropdown-item">Sub Categories</a>
                         <hr class="dropdown-divider">
                         <div class="dropdown-header">Manage Products</div>
-                        <a href="/products" class="dropdown-item">Index</a>
-                        <a href="/products/in-stock" class="dropdown-item">In Stock</a>
-                        <a href="/products/out-of-stock" class="dropdown-item">Out Of Stock</a>
+                        <a href="/products/index" class="dropdown-item">All</a>
+                        <a href="/products/in-stock" class="dropdown-item">In stock</a>
+                        <a href="/products/out-of-stock" class="dropdown-item">Out of stock</a>
                     </div>
                 </li>
 
-                <!-- ORDERS -->
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="ordersDropdown" role="button" data-toggle="dropdown">Orders</a>
-                    <div class="dropdown-menu">
-                        <a href="/orders/incoming" class="dropdown-item">Incoming</a>
-                        <a href="/orders/outgoing" class="dropdown-item">Outgoing</a>
-                    </div>
-                </li>
-
-                <!-- PAYMENTS -->
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="paymentsDropdown" role="button" data-toggle="dropdown">Payments</a>
-                    <div class="dropdown-menu">
-                        <a href="/payments" class="dropdown-item">Index</a>
-                        <a href="/payments/sent" class="dropdown-item">Sent</a>
-                        <a href="/payments/received" class="dropdown-item">Received</a>
-                    </div>
-                </li>
             </ul>
 
-            <!-- NAVBAR RIGHT -->
-            <ul class="navbar-nav ml-auto">
-                {% if session.username %}
-                <li class="nav-item">
-                    <a href="/auth/profile" class="nav-link">{{ session.username }}</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/auth/logout" class="nav-link">Logout</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a href="/auth/register" class="nav-link">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/auth/login" class="nav-link">Login</a>
-                </li>
-                {% endif %}
-            </ul>
         </div>
+
     </nav>
-
-    <!-- CONTENT CONTAINER -->
-    <div class="container">
-
-        <!-- HEADER BLOCK -->
-        {% block header %} {% endblock %}
-
-        <!-- CONTENT BLOCK -->
-        {% block content %} {% endblock %}
-
-    </div>
-
 </body>
 
 </html>
