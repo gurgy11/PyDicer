@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% block header %}
+<div class="heading">
+    <h1 class="top-header">Login</h1>
+    <h2 class="text-muted second-header">Use the form below to login into your DicePy account!</h2>
+    <hr class="hr-header">
+</div>
+{% endblock %} {% block content %}
+<div class="errors-container">
+    {% if errors %}
+    <div class="alert alert-danger">
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </div>
+    {% elif error %}
+    <div class="alert alert-danger">
+        <li>{{ error }}</li>
+    </div>
+    {% endif %}
+</div>
+<div class="form-container">
+    <form method="POST" id="loginForm" class="dp-form">
+
+        <!-- Username and Password -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <label for="username">Username: *</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="password">Password: *</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary form-control">Login!</button>
+                </div>
+                <div class="col">
+                    <button type="button" id="toRegisterBtn" class="btn btn-secondary form-control">Don't have an account? Register!</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script>
+    $('#toRegisterBtn').on('click', function() {
+        window.location.href = '/auth/register';
+    });
+</script>
+{% endblock %}

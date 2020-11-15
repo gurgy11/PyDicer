@@ -30,8 +30,9 @@ def create_app(test_config=None):
 
     @app.route('/')
     @app.route('/index')
-    @login_required
+    @
     def index():
+        print(auth_middleware.login_required)
         return render_template('index.html', title='DicePy - Index')
 
     ''' Blueprint Imports and Registration '''

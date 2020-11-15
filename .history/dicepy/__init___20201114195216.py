@@ -6,7 +6,7 @@ from flask.globals import current_app
 
 # Local imports
 from .settings import *
-from dicepy.lib.middleware.auth_middleware import login_required
+import dicepy.lib.middleware.auth_middleware as auth_middleware
 
 # Load environment variables
 load_dotenv()
@@ -28,9 +28,11 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    print(auth_middleware.login_required())
+
     @app.route('/')
     @app.route('/index')
-    @login_required
+    @auth_middleware.login_required
     def index():
         return render_template('index.html', title='DicePy - Index')
 

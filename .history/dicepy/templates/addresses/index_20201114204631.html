@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block header %}
+<div class="header">
+    <h1 class="top-heading">Addresses</h1>
+    <h2 class="text-muted second-heading">This is the index page for all addresses. View and manage them below!</h2>
+    <hr class="hr-header">
+</div>
+{% endblock %} {% block content %}
+<div class="options-container">
+    <div class="row">
+        <div class="col">
+            <form action="/addresses/create" method="GET">
+                <button type="submit" id="createNewBtn" class="btn btn-primary form-control">Create New</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

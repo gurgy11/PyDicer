@@ -2,11 +2,9 @@ import os
 
 from flask import Flask, render_template
 from dotenv import load_dotenv
-from flask.globals import current_app
 
 # Local imports
 from .settings import *
-from dicepy.lib.middleware.auth_middleware import login_required
 
 # Load environment variables
 load_dotenv()
@@ -30,15 +28,10 @@ def create_app(test_config=None):
 
     @app.route('/')
     @app.route('/index')
-    @login_required
     def index():
         return render_template('index.html', title='DicePy - Index')
 
     ''' Blueprint Imports and Registration '''
-
-    from dicepy.modules.addresses import addresses_bp
-    app.register_blueprint(addresses_bp)
-    app.add_url_rule('/', endpoint='addresses')
 
     from dicepy.modules.auth import auth_bp
     app.register_blueprint(auth_bp)

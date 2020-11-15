@@ -30,7 +30,7 @@ def create_app(test_config=None):
 
     @app.route('/')
     @app.route('/index')
-    @login_required
+    @login_required()
     def index():
         return render_template('index.html', title='DicePy - Index')
 

@@ -2,11 +2,10 @@ import os
 
 from flask import Flask, render_template
 from dotenv import load_dotenv
-from flask.globals import current_app
 
 # Local imports
 from .settings import *
-from dicepy.lib.middleware.auth_middleware import login_required
+import dicepy.modules.auth.auth_controller as auth_controller
 
 # Load environment variables
 load_dotenv()
@@ -28,9 +27,10 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+        a_controller = auth_controller.AuthController()
+
     @app.route('/')
     @app.route('/index')
-    @login_required
     def index():
         return render_template('index.html', title='DicePy - Index')
 
