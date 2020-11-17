@@ -12,26 +12,8 @@ u_controller = UsersController()
 @bp.route('/auth/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        # Request form's address data
-        address_form_data = {
-            'street_address': request.form.get('street_address'),
-            'city': request.form.get('city'),
-            'postal_code': request.form.get('postal_code'),
-            'province': request.form.get('province'),
-            'country': request.form.get('country')
-        }
-
-        # Create new address
-        address_id = a_controller.create(address_form_data)
-
-        if address_id is None:
-            errors = ['There are problems with the address values. Could not add the address!']
-            return render_template('auth/register.html', title='DicePy - Register', errors=errors)
-
-        print('User form data...')
-
-        # Request form's user data
-        user_form_data = {
+        # Request form data
+        form_data = {
             'first_name': request.form.get('first_name'),
             'last_name': request.form.get('last_name'),
             'email': request.form.get('email'),
@@ -39,11 +21,15 @@ def register():
             'username': request.form.get('username'),
             'password': request.form.get('password'),
             'confirm_password': request.form.get('confirm_password'),
-            'address_id': address_id
+            'street_address': request.form.get('street_address'),
+            'city': request.form.get('city'),
+            'postal_code': request.form.get('postal_code'),
+            'province': request.form.get('province'),
+            'country': request.form.get('country')
         }
 
         # Create new user
-        user_created, user_id, errors = u_controller.register(user_form_data)
+        user_created, user_id, errors = u_controller.register(form_data)
 
         if user_created is not True or len(errors) > 0:
             return render_template('auth/register.html', title='DicePy - Register', errors=errors)

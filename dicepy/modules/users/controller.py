@@ -10,7 +10,7 @@ class UsersController():
         self.db = Database()
         self.table = 'users'
         self.columns = [
-            'first_name', 'last_name', 'email', 'phone', 'username', 'password', 'address_id'
+            'first_name', 'last_name', 'email', 'phone', 'username', 'password', 'street_address', 'city', 'postal_code', 'province', 'country'
         ]
         self.auth_controller = auth_controller.AuthController()
 
@@ -24,7 +24,11 @@ class UsersController():
             form['phone'],
             form['username'],
             form['password'],
-            form['address_id']
+            form['street_address'],
+            form['city'],
+            form['postal_code'],
+            form['province'],
+            form['country']
         )
 
         return user
@@ -32,12 +36,13 @@ class UsersController():
     def form_to_values(self, form):
         user = self.form_to_model(form)
         values = (user.first_name, user.last_name, user.email,
-                  user.phone, user.username, generate_password_hash(user.password), user.address_id)
+                  user.phone, user.username, generate_password_hash(user.password), user.street_address, user.city, user.postal_code, 
+                  user.province, user.country)
 
         return values
 
     def result_to_model(self, result):
-        user = UserModel(result[1], result[2], result[3], result[4], result[5], result[6], result[7])
+        user = UserModel(result[1], result[2], result[3], result[4], result[5], result[6], result[7], result[8], result[9], result[10], result[11])
         user.id = result[0]
         user.created_at = result[8]
 
@@ -100,7 +105,7 @@ class UsersController():
 
             return True, user_id, errors
         except Exception as e:
-            print('Exceptin throw while creating user: ' + e)
+            print('Exception throw while creating user: ' + str(e))
             errors.append(e)
 
             return False, None, errors

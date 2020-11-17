@@ -46,7 +46,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV='/home/gregory/git/DicePy/venv'
+VIRTUAL_ENV='/home/gregory/GitHub Repositories/DicePy/venv'
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

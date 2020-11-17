@@ -1,0 +1,17 @@
+.btn-pagination {
+    margin-right: 5px;
+}
+
+.table-filters-container {
+    margin-bottom: 10px;
+}
+
+.btn-option {
+    margin-bottom: 5px;
+}
+
+td {
+    max-width: 10%;
+    height: 40px !important;
+    overflow: hidden;
+}

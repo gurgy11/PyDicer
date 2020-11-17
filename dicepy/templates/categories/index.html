@@ -1,0 +1,88 @@
+{% extends 'base.html' %} {% block header %}
+<div class="header">
+    <h1 class="top-heading">Categories</h1>
+    <h2 class="text-muted second-heading">This is the index page for your categories. You can view and manage them below!</h2>
+    <hr class="hr-header">
+</div>
+{% endblock %} {% block content %}
+<div class="options-container">
+    <div class="row">
+        <div class="col">
+            <form action="/categories/create" method="GET">
+                <button type="submit" id="createNewBtn" class="btn btn-primary form-control">Create New</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+</div>
+<div class="table-container">
+    <h3 class="table-header">Categories Table View</h3>
+    <div class="table-filters-container">
+        <div class="row">
+            <div class="col">
+                <input type="number" step="1" name="limit" id="limit" class="form-control" placeholder="Enter a limit of items per page...">
+            </div>
+            <div class="col">
+                <button type="button" id="setLimitBtn" class="btn btn-outline-primary form-control">Set Limit</button>
+            </div>
+        </div>
+    </div>
+    <table id="categoriesTable" class="table table-responsive table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Notes</th>
+                <th>Created At</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if categories %} {% for cat in categories %}
+            <tr>
+                <td>{{ cat._id }}</td>
+                <td>{{ cat._name }}</td>
+                <td>{{ cat._description }}</td>
+                <td>{{ cat._notes }}</td>
+                <td>{{ cat._created_at }}</td>
+                <td>
+                    <div class="row">
+                        <div class="col">
+                            <form action="/categories/edit/{{ cat._id }}" method="GET" id="toEditForm">
+                                <button type="submit" class="btn-option btn btn-outline-warning form-control">Edit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <form action="/categories/delete/{{ cat._id }}" method="GET" id="toDelete">
+                                <button type="submit" class="btn-option btn btn-outline-danger form-control">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %} {% else %}
+            <p>No records found in database.</p>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+<div class="pagination-container">
+    <div class="row">
+        {% if num_pages %} {% for x in range(num_pages) %}
+        <button type="button" class="btn-pagination btn btn-outline-primary" value="{{ x + 1 }}">{{ x + 1 }}</button> {% endfor %} {% endif %}
+    </div>
+</div>
+<script>
+    $('#setLimitBtn').on('click', function() {
+        var limit = $('#limit').val();
+        window.location.href = '/categories/index?page={{ page }}&limit=' + limit;
+    });
+    $('.btn-pagination').on('click', function() {
+        var page = $(this).val();
+        window.location.href = '/categories/index?page=' + page + '&limit={{ limit }}';
+    });
+</script>
+{% endblock %}

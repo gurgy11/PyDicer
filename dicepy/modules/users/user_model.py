@@ -1,6 +1,6 @@
 class UserModel():
 
-    def __init__(self, first_name, last_name, email, phone, username, password, address_id):
+    def __init__(self, first_name, last_name, email, phone, username, password, street_address, city, postal_code, province, country):
         self._id = None
         self._first_name = first_name
         self._last_name = last_name
@@ -8,7 +8,11 @@ class UserModel():
         self._phone = phone
         self._username = username
         self._password = password
-        self._address_id = address_id
+        self._street_address = street_address
+        self._city = city
+        self._postal_code = postal_code
+        self._province = province
+        self._country = country
         self._created_at = None
 
     ''' Properties '''
@@ -70,12 +74,44 @@ class UserModel():
         self._password = password
 
     @property
-    def address_id(self):
-        return self._address_id
-
-    @address_id.setter
-    def address_id(self, address_id):
-        self._address_id = address_id
+    def street_address(self):
+        return self._street_address
+    
+    @street_address.setter
+    def street_address(self, street_address):
+        self._street_address = street_address
+        
+    @property
+    def city(self):
+        return self._city
+    
+    @city.setter
+    def city(self, city):
+        self._city = city
+        
+    @property
+    def postal_code(self):
+        return self._postal_code
+    
+    @postal_code.setter
+    def postal_code(self, postal_code):
+        self._postal_code = postal_code
+        
+    @property
+    def province(self):
+        return self._province
+    
+    @province.setter
+    def province(self, province):
+        self._province = province
+        
+    @property
+    def country(self):
+        return self._country
+    
+    @country.setter
+    def country(self, country):
+        self._country = country
 
     @property
     def created_at(self):

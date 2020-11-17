@@ -7,6 +7,7 @@ from flask.globals import current_app
 # Local imports
 from .settings import *
 from dicepy.lib.middleware.auth_middleware import login_required
+from dicepy.lib.database.scripts import initialize_db
 
 # Load environment variables
 load_dotenv()
@@ -28,6 +29,15 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    # table = AddressesTable()
+    # table.create_table()
+    
+    ''' Initialize Database Tables '''
+    # try:
+    #     ...
+    # except:
+    #        ...
+
     @app.route('/')
     @app.route('/index')
     @login_required
@@ -43,5 +53,9 @@ def create_app(test_config=None):
     from dicepy.modules.auth import auth_bp
     app.register_blueprint(auth_bp)
     app.add_url_rule('/', endpoint='auth')
+    
+    from dicepy.modules.categories import categories_bp
+    app.register_blueprint(categories_bp)
+    app.add_url_rule('/', endpoint='categories')
 
     return app

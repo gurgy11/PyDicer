@@ -1,4 +1,6 @@
-#!/home/gregory/git/DicePy/venv/bin/python
+#!/bin/sh
+'''exec' "/home/gregory/GitHub Repositories/DicePy/venv/bin/python" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys

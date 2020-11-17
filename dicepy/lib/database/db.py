@@ -23,6 +23,43 @@ class Database():
 
     def cursor(self):
         return self.connection.cursor()
+    
+    ''' Create Table Methods '''
+    
+    def create_table(self, schema_sql):
+        try:
+            cursor = self.cursor()
+            cursor.execute(schema_sql)
+        
+            conn = self.connection
+            conn.commit()
+        except Exception as e:
+            print(str(e))
+        # table_str = """CREATE TABLE IF NOT EXISTS {table} (""".format(table=name)
+        
+        # for col in columns:
+        #     table_str += """{column},""".format(column=col)
+        
+        # table_str += primary_key
+        
+        # if foreign_keys is not None:
+        #     for fk in foreign_keys:
+        #         fk_str = """{fk}""".format(fk=fk)
+                
+        #         if foreign_keys.index(fk) == len(foreign_keys) - 1:
+        #             fk_str += ")"
+        #         else:
+        #             fk_str += ", "
+                
+        #         table_str += fk_str
+                
+        # table_str += ")"
+        
+        # cursor = self.cursor()
+        # cursor.execute(table_str)
+        
+        # conn = self.connection
+        # conn.commit()
 
     ''' Query Execution Methods '''
 
@@ -41,8 +78,7 @@ class Database():
         return data
 
     def select_by_id(self, table, row_id):
-        query_str = """ SELECT * FROM {table} WHERE id = {row_id} """.format(
-            row_id=row_id)
+        query_str = """ SELECT * FROM {table} WHERE id = {row_id} """.format(table=table, row_id=row_id)
 
         cursor = self.cursor()
         cursor.execute(query_str)
@@ -104,3 +140,47 @@ class Database():
         # Todo-> Log result
 
         return cursor.lastrowid
+    
+    def number_of_rows(self, table):
+        query_str = """SELECT COUNT(*) FROM {table};""".format(table=table)
+        
+        cursor = self.cursor()
+        cursor.execute(query_str)
+        
+        result = cursor.fetchone()
+        num_rows = result[0]
+        
+        return num_rows
+
+    def update(self, table, columns, values, row_id):
+        query_str = """UPDATE `{table}` SET """.format(table=table)
+        
+        for col in columns:
+            col_str = """{col}=%s""".format(col=col)
+            
+            if columns.index(col) == len(columns) - 1:
+                col_str += " "
+            else:
+                col_str += ", "
+                
+            query_str += col_str
+            
+        query_str += """WHERE id={row_id}""".format(row_id=int(row_id))
+        
+        print(query_str)
+        
+        cursor = self.cursor()
+        cursor.execute(query_str, values)
+        
+        conn = self.connection
+        conn.commit()
+        
+    def delete(self, table, row_id):
+        query_str = """DELETE FROM {table} WHERE id={row_id}""".format(table=table, row_id=row_id)
+        
+        cursor = self.cursor()
+        cursor.execute(query_str)
+        
+        conn = self.connection
+        conn.commit()
+        
