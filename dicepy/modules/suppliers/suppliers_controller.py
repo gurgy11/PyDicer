@@ -100,8 +100,24 @@ class SuppliersController():
         
         return supplier
     
-    def select_in_range(self, start_index, end_index):
-        pass
+    def select_in_range(self, page, limit):
+        start_index = self.get_start_index(page, limit)
+        end_index = self.get_end_index(page, limit)
+        
+        suppliers = self.select_all()
+        suppliers_in_range = []
+        
+        in_range = False
+        for s in suppliers:
+            if suppliers.index(s) == end_index:
+                break
+            elif suppliers.index(s) == start_index:
+                in_range = True
+            
+            if in_range:
+                suppliers_in_range.append(s)
+        
+        return suppliers_in_range
     
     ''' Create and Edit Methods '''
     
@@ -151,3 +167,15 @@ class SuppliersController():
         self.db.delete(self.table, supplier_id)
     
     ''' Indexing Methods '''
+    
+    def get_start_index(self, page, limit):
+        return (page - 1) * limit
+    
+    def get_end_index(self, page, limit):
+        return page * limit
+    
+    def number_of_rows(self):
+        return self.db.number_of_rows(self.table)
+    
+    def number_of_pages(self, limit):
+        return math.ceil(self.number_of_rows() / limit)

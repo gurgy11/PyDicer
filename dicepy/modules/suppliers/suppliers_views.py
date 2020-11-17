@@ -11,7 +11,27 @@ controller = SuppliersController()
 @bp.route('/suppliers/index')
 @login_required
 def index():
-    return render_template('suppliers/index.html', title='Suppliers Index', suppliers=[])
+    page = None
+    limit = None
+    
+    if 'page' in request.args:
+        page = int(request.args['page'])
+    else:
+        page = 1
+    
+    if 'limit' in request.args:
+        limit = int(request.args['limit'])
+    else:
+        limit = 10
+        
+    print('Suppliers Start Index: ' + str(controller.get_start_index(page, limit)))
+    print('Suppliers End Index: ' + str(controller.get_end_index(page, limit)))
+    
+    suppliers = controller.select_in_range(page, limit)
+    num_pages = controller.number_of_pages(limit)
+    
+    return render_template('suppliers/index.html', title='Suppliers Index', suppliers=suppliers, num_pages=num_pages, 
+                           limit=limit)
 
 
 @bp.route('/suppliers/create', methods=['GET', 'POST'])
