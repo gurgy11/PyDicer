@@ -61,5 +61,9 @@ def create_app(test_config=None):
     from dicepy.modules.clients import clients_bp
     app.register_blueprint(clients_bp)
     app.add_url_rule('/', endpoint='clients')
+    
+    from dicepy.modules.suppliers import suppliers_bp
+    app.register_blueprint(suppliers_bp)
+    app.add_url_rule('/', endpoint='suppliers')
 
     return app

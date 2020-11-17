@@ -87,7 +87,7 @@ def edit(client_id):
         errors = controller.edit(c_id, form_data)
         
         if len(errors) > 0:
-            return render_template('clients/edit.html', title='Edit a client', errors=errors)
+            return render_template('clients/edit.html', title='Edit a client', client=client, errors=errors)
         else:
             page = session.get('client_page')
             limit = session.get('client_limit')
